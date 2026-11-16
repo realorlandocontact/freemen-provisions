@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Services — Freemen Provisions</title>
-  <meta name="description" content="Agricultural consulting and on-farm services: farm planning, soil health, crop and pasture management, livestock programs, and regulatory guidance.">
+  <meta name="description" content="Agricultural consulting and on-farm services: farm planning, soil health, and crop consulting.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,21 +45,7 @@
         </div>
       </div>
       <div class="row">
-        <div><span class="label">03 — Livestock</span></div>
-        <div>
-          <h2>Livestock &amp; pasture programs</h2>
-          <p>Herd health planning, pasture improvement, winter feed budgeting, and grazing systems for beef, dairy, sheep, and poultry.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div><span class="label">04 — Compliance</span></div>
-        <div>
-          <h2>Regulatory &amp; program guidance</h2>
-          <p>Help with USDA programs, conservation cost-share applications, recordkeeping, and food-safety requirements for direct sales.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div><span class="label">05 — On-site</span></div>
+        <div><span class="label">03 — On-site</span></div>
         <div>
           <h2>On-farm services</h2>
           <p>Field assessments, fence and water system layout, planting and harvest support, and seasonal labor for peak periods.</p>
@@ -69,13 +55,28 @@
   </section>
 
   <section>
-    <span class="label">Booking &amp; payment</span>
-    <h2>How engagements work</h2>
-    <p>Consulting is booked as appointments or retainers and paid in advance by card through our secure checkout. You'll always receive written confirmation of scope, schedule, and price before any work begins.</p>
-    <p>Plans change — if you need to reschedule or cancel, see our <a href="cancellations.html">cancellation policy</a>. If something goes wrong with billing, see our <a href="refunds.html">refund &amp; dispute policy</a>.</p>
-    <div class="cta-row">
-      <a class="btn" href="contact.html">Request a consultation</a>
-    </div>
+    <span class="label">Get started</span>
+    <h2>Reach out about your project</h2>
+    <p>Tell us a little about your land and what you're working toward, and we'll get back to you within one business day.</p>
+    <form class="contact" id="consultForm" novalidate>
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div>
+        <label for="email">Your email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div>
+        <label for="message">Tell us about your land and what you need</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+      <div>
+        <button class="btn" type="submit">Send inquiry</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">Submitting opens your email app with the message pre-addressed to us — nothing is stored on this website.</p>
+      </div>
+    </form>
   </section>
 </main>
 
@@ -104,6 +105,28 @@
     <span>Email: <a href="mailto:freemenpro@pm.me">freemenpro@pm.me</a></span>
   </div>
 </footer>
+
+<script>
+  document.getElementById('consultForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = document.getElementById('formStatus');
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill in your name, email, and message.';
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      status.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    var subject = encodeURIComponent('Consulting inquiry from ' + name);
+    var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:freemenpro@pm.me?subject=' + subject + '&body=' + body;
+    status.textContent = 'Opening your email app… if nothing happens, email us directly at freemenpro@pm.me';
+  });
+</script>
 
 </body>
 </html>
