@@ -1,0 +1,12 @@
+{
+  "name": "freemen-provisions",
+  "version": "1.0.0",
+  "description": "Freemen Provisions — agricultural consulting, services & products",
+  "private": true,
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
