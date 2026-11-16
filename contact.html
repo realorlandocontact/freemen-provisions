@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact — Freemen Provisions</title>
+  <meta name="description" content="Contact Freemen Provisions for agricultural consulting, services, or product orders.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">Freemen Provisions</a>
+  <nav class="site-nav" aria-label="Main navigation">
+    <a href="services.html">Services</a>
+    <a href="products.html">Products</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="label">Contact</span>
+    <h1>Talk to a person, not a ticket queue.</h1>
+    <p class="lede">Whether it's a question about consulting, a product order, or a return — we answer every message within one business day.</p>
+  </section>
+
+  <section>
+    <dl class="contact-block">
+      <div>
+        <dt>Email</dt>
+        <dd><a href="mailto:contact@freemenprovisions.com">contact@freemenprovisions.com</a></dd>
+      </div>
+      <div>
+        <dt>Phone</dt>
+        <dd><a href="tel:+15550130142">(555) 013-0142</a></dd>
+      </div>
+      <div>
+        <dt>Business address</dt>
+        <dd>Freemen Provisions<br>123 Harvest Lane<br>Yourtown, ST 00000, USA</dd>
+      </div>
+      <div>
+        <dt>Business hours</dt>
+        <dd>Monday–Friday, 8am–6pm (local time)</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section>
+    <span class="label">Message us</span>
+    <h2>Send us a message</h2>
+    <form class="contact" id="contactForm" novalidate>
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" id="name" name="name" required autocomplete="name">
+      </div>
+      <div>
+        <label for="email">Your email</label>
+        <input type="email" id="email" name="email" required autocomplete="email">
+      </div>
+      <div>
+        <label for="message">How can we help?</label>
+        <textarea id="message" name="message" rows="6" required></textarea>
+      </div>
+      <div>
+        <button class="btn" type="submit">Send message</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        <p class="form-note">Submitting opens your email app with the message pre-addressed to us — nothing is stored on this website.</p>
+      </div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <span class="label" style="color:#ffd9c7">Freemen Provisions</span>
+      <h2>Let's talk about your land.</h2>
+      <p style="color:#fff4ec">Questions about consulting, services, or an order — we answer every message within one business day.</p>
+      <p style="color:#fff4ec"><a href="contact.html">Contact us →</a></p>
+    </div>
+    <div>
+      <span class="label" style="color:#ffd9c7">Policies</span>
+      <ul class="footer-links">
+        <li><a href="returns.html">Return Policy</a></li>
+        <li><a href="refunds.html">Refund &amp; Dispute Policy</a></li>
+        <li><a href="cancellations.html">Cancellation Policy</a></li>
+        <li><a href="promotions.html">Promotions Terms</a></li>
+        <li><a href="terms.html">Terms of Service</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Freemen Provisions. All rights reserved.</span>
+    <span>Email: <a href="mailto:contact@freemenprovisions.com">contact@freemenprovisions.com</a></span>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var status = document.getElementById('formStatus');
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+    if (!name || !email || !message) {
+      status.textContent = 'Please fill in your name, email, and message.';
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      status.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    var subject = encodeURIComponent('Website inquiry from ' + name);
+    var body = encodeURIComponent(message + '\n\n— ' + name + ' (' + email + ')');
+    window.location.href = 'mailto:contact@freemenprovisions.com?subject=' + subject + '&body=' + body;
+    status.textContent = 'Opening your email app… if nothing happens, email us directly at contact@freemenprovisions.com';
+  });
+</script>
+
+</body>
+</html>
