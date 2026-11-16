@@ -1,0 +1,185 @@
+/* Freemen Provisions — shared styles */
+
+:root {
+  --bg: #f4efdc;
+  --ink: #121212;
+  --muted: #6d6a5e;
+  --line: #d8d1b8;
+  --accent: #d55930;
+  --accent-ink: #fff4ec;
+  --max: 46rem;
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Public Sans', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .serif {
+  font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6em;
+}
+
+h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); }
+h3 { font-size: 1.15rem; font-family: 'Public Sans', sans-serif; font-weight: 600; }
+
+p { margin: 0 0 1em; max-width: 68ch; }
+a { color: var(--ink); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--accent); }
+
+/* Header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 1.4rem clamp(1.2rem, 5vw, 3rem);
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.wordmark {
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+.site-nav { display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.site-nav a {
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+  transition: opacity 200ms cubic-bezier(.23,1,.32,1);
+}
+.site-nav a:hover { opacity: 0.55; color: var(--ink); }
+
+/* Main */
+main { max-width: var(--max); margin: 0 auto; padding: 0 clamp(1.2rem, 5vw, 2rem); }
+section { padding: clamp(3rem, 8vw, 5.5rem) 0 0; }
+section:last-of-type { padding-bottom: clamp(3rem, 8vw, 5.5rem); }
+
+.label {
+  display: block;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}
+
+.lede { font-size: 1.1rem; color: var(--ink); }
+.muted { color: var(--muted); }
+
+/* Editorial rows: 3-col label / 9-col content */
+.rows { display: grid; gap: 2.2rem; }
+@media (min-width: 700px) {
+  .row { display: grid; grid-template-columns: 3fr 9fr; gap: 2rem; border-top: 1px solid var(--line); padding-top: 1.6rem; }
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.6rem;
+  border: 1px solid var(--ink);
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background-color 200ms cubic-bezier(.23,1,.32,1), color 200ms cubic-bezier(.23,1,.32,1);
+  cursor: pointer;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+}
+.btn:hover { background: var(--ink); color: var(--bg); }
+.btn:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Hero */
+.hero { padding-top: clamp(3.5rem, 10vw, 7rem); }
+.hero p { font-size: 1.15rem; }
+.cta-row { display: flex; gap: 0.9rem; flex-wrap: wrap; margin-top: 1.8rem; }
+
+/* Decorative field-lines SVG */
+.field-art { display: block; width: 100%; max-width: 30rem; margin: 2.5rem 0 0; }
+
+/* Contact form */
+form.contact { display: grid; gap: 1.1rem; margin-top: 0.5rem; }
+form.contact label { font-size: 0.85rem; font-weight: 600; display: block; margin-bottom: 0.35rem; }
+form.contact input, form.contact textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbf8ee;
+  color: var(--ink);
+  font: inherit;
+}
+form.contact input:focus, form.contact textarea:focus { border-color: var(--ink); outline: none; }
+.form-note { font-size: 0.85rem; color: var(--muted); }
+.form-status { font-size: 0.9rem; color: var(--accent); min-height: 1.2em; }
+
+/* Footer */
+.site-footer {
+  background: var(--accent);
+  color: var(--accent-ink);
+  margin-top: clamp(3rem, 8vw, 5.5rem);
+  padding: clamp(2.5rem, 6vw, 4rem) clamp(1.2rem, 5vw, 3rem) 2rem;
+}
+.footer-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  gap: 2rem;
+}
+@media (min-width: 700px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+.site-footer h2 { color: var(--accent-ink); font-size: clamp(1.6rem, 4vw, 2.2rem); }
+.site-footer a { color: var(--accent-ink); text-decoration: none; }
+.site-footer a:hover { text-decoration: underline; }
+.footer-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.45rem; font-size: 0.92rem; }
+.footer-bottom {
+  max-width: var(--max);
+  margin: 2.5rem auto 0;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(255, 244, 236, 0.35);
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Policy pages */
+.policy h1 { margin-bottom: 0.2em; }
+.policy .updated { color: var(--muted); font-size: 0.85rem; margin-bottom: 2rem; }
+.policy h2 { margin-top: 2rem; }
+.policy ul { padding-left: 1.3rem; }
+.policy li { margin-bottom: 0.5em; }
+
+/* Contact info block */
+.contact-block { border-top: 1px solid var(--line); padding-top: 1.6rem; display: grid; gap: 1rem; }
+@media (min-width: 700px) { .contact-block { grid-template-columns: 1fr 1fr; } }
+.contact-block dt { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.22em; color: var(--muted); margin-bottom: 0.3rem; }
+.contact-block dd { margin: 0; font-size: 1.05rem; }
+
+@media (max-width: 480px) {
+  .site-header { padding: 1.1rem 1.2rem; }
+}
