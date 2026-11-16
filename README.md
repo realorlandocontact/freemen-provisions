@@ -30,6 +30,5 @@ freemen-provisions.up.railway.app) for the Stripe application.
 
 ## Contact details
 
-The email (`contact@freemenprovisions.com`), phone (`(555) 013-0142`), and address
-(`123 Harvest Lane, Yourtown, ST 00000`) are placeholders — replace with the real
-business details before submitting the Stripe application.
+Real email (freemenpro@pm.me) and phone ((407) 704-0240) are on the site. No business
+address is published yet — add one to contact.html / terms.html / privacy.html when available.
